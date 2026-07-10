@@ -21,8 +21,10 @@ int main() {
     const auto factors = get_factors(NUM);
 
     for (ll i = static_cast<int>(factors.size()) - 1; i >= 0; --i) {
-        if (auto val = get_factors(factors[i]); val.empty()) {
-            cout << i;
+        auto val = get_factors(factors[i]);
+
+        if (val.empty()) {
+            cout << factors[i];
 
             return 0;
         }
