@@ -7,7 +7,7 @@ using namespace std;
 constexpr int MX = 2'000'000;
 
 int main() {
-    array<bool, MX> arr {};
+    array<bool, MX> arr{};
     ll sum_primes = 0;
     arr.fill(true);
 
