@@ -33,9 +33,9 @@ int main() {
     ll mx_value = 0;
 
     for (const auto &row: grid) {
-        for (int j = 0; j < mx - 3; ++j) {
-            ll current_product = row[j];
-            for (int k = 1; k <= 3; ++k) current_product *= row[j + k];
+        for (int col = 0; col < mx - 3; ++col) {
+            ll current_product = row[col];
+            for (int k = 1; k <= 3; ++k) current_product *= row[col + k];
             mx_value = max(mx_value, current_product);
         }
     }
@@ -45,6 +45,12 @@ int main() {
             ll current_product = grid[row][col];
             for (int k = 1; k <= 3; ++k) current_product *= grid[row + k][col];
             mx_value = max(mx_value, current_product);
+        }
+    }
+
+    for (int row = 0; row < mx; ++row) {
+        for (int col = 0; col < mx; ++col) {
+
         }
     }
 
