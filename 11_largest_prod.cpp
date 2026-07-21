@@ -62,5 +62,19 @@ int main() {
         }
     }
 
+    for (int row = 0; row < mx; ++row) {
+        for (int col = 0; col < mx; ++col) {
+            ll current_product = grid[row][col];
+            int k = 1;
+            for (; k <= 3; ++k) {
+                if (row < 0 || col + k >= mx) break;
+                current_product *= grid[row - 1][col + 1];
+            }
+            if (k == 4) {
+                mx_value = max(mx_value, current_product);
+            }
+        }
+    }
+
     cout << mx_value;
 }
