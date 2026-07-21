@@ -35,7 +35,7 @@ int main() {
     for (const auto &row: grid) {
         for (int col = 0; col < mx - 3; ++col) {
             ll current_product = row[col];
-            for (int k = 1; k <= 3; ++k) current_product *= row[col + k];
+            for (int k = 1; k <= 3; ++k) current_product *= static_cast<ll>(row[col + k]);
             mx_value = max(mx_value, current_product);
         }
     }
@@ -43,7 +43,7 @@ int main() {
     for (int col = 0; col < mx; ++col) {
         for (int row = 0; row < mx - 3; ++row) {
             ll current_product = grid[row][col];
-            for (int k = 1; k <= 3; ++k) current_product *= grid[row + k][col];
+            for (int k = 1; k <= 3; ++k) current_product *= static_cast<ll>(grid[row + k][col]);
             mx_value = max(mx_value, current_product);
         }
     }
@@ -54,7 +54,7 @@ int main() {
             int k = 1;
             for (; k <= 3; ++k) {
                 if (row + k >= mx || col + k >= mx) break;
-                current_product *= grid[row + 1][col + 1];
+                current_product *= static_cast<ll>(grid[row + 1][col + 1]);
             }
             if (k == 4) {
                 mx_value = max(mx_value, current_product);
@@ -68,7 +68,7 @@ int main() {
             int k = 1;
             for (; k <= 3; ++k) {
                 if (row < 0 || col + k >= mx) break;
-                current_product *= grid[row - 1][col + 1];
+                current_product *= static_cast<ll>(grid[row - 1][col + 1]);
             }
             if (k == 4) {
                 mx_value = max(mx_value, current_product);
