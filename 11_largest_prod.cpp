@@ -32,10 +32,18 @@ static int grid[mx][mx] = {
 int main() {
     ll mx_value = 0;
 
-    for (const auto & i : grid) {
+    for (const auto &row: grid) {
         for (int j = 0; j < mx - 3; ++j) {
-            ll current_product = i[j];
-            for (int k = 1; k <= 3; ++k) current_product *= i[j + k];
+            ll current_product = row[j];
+            for (int k = 1; k <= 3; ++k) current_product *= row[j + k];
+            mx_value = max(mx_value, current_product);
+        }
+    }
+
+    for (int col = 0; col < mx; ++col) {
+        for (int row = 0; row < mx - 3; ++row) {
+            ll current_product = grid[row][col];
+            for (int k = 1; k <= 3; ++k) current_product *= grid[row + k][col];
             mx_value = max(mx_value, current_product);
         }
     }
