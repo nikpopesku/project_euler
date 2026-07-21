@@ -4,18 +4,18 @@
 
 using namespace std;
 
-constexpr int MX = 2'000'000;
+constexpr int mx = 2'000'000;
 
 int main() {
-    array<bool, MX> arr{};
+    array<bool, mx> arr{};
     ll sum_primes = 0;
     arr.fill(true);
 
-    for (int i = 2; i < MX; ++i) {
+    for (int i = 2; i < mx; ++i) {
         if (arr[i] == false) continue;
         sum_primes += static_cast<ll>(i);
 
-        for (int j = i; j < MX; j += i) {
+        for (int j = i; j < mx; j += i) {
             arr[j] = false;
         }
     }
