@@ -54,7 +54,7 @@ int main() {
             int k = 1;
             for (; k <= 3; ++k) {
                 if (row + k >= mx || col + k >= mx) break;
-                current_product *= static_cast<ll>(grid[row + 1][col + 1]);
+                current_product *= static_cast<ll>(grid[row + k][col + k]);
             }
             if (k == 4) {
                 mx_value = max(mx_value, current_product);
@@ -67,8 +67,8 @@ int main() {
             ll current_product = grid[row][col];
             int k = 1;
             for (; k <= 3; ++k) {
-                if (row < 0 || col + k >= mx) break;
-                current_product *= static_cast<ll>(grid[row - 1][col + 1]);
+                if (row - k < 0 || col + k >= mx) break;
+                current_product *= static_cast<ll>(grid[row - k][col + k]);
             }
             if (k == 4) {
                 mx_value = max(mx_value, current_product);
