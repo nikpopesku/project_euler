@@ -112,4 +112,7 @@ array<string, 100> nums
 
 
 int main() {
+    for (int i = 0; i < 100; ++i) {
+        cout << i << ' ' << nums[i] << '\n';
+    }
 }
