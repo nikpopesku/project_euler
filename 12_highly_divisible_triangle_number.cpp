@@ -2,7 +2,7 @@
 
 #define ll long long
 
-constexpr int limit = 5;
+constexpr int limit = 500;
 
 using namespace std;
 
@@ -17,6 +17,7 @@ int main() {
             if (current_triangular_number % i == 0) ++count_divisors;
         }
         ++count_divisors;
+        cout << current_triangular_number << ' ' << count_divisors << '\n';
     }
 
     cout << current_triangular_number << '\n';
