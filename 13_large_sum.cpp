@@ -112,7 +112,21 @@ array<string, 100> nums
 
 
 int main() {
-    for (int i = 0; i < 100; ++i) {
-        cout << i << ' ' << nums[i] << '\n';
+    string sum;
+    int previous_num = 0;
+
+    for (int j = 49; j >= 0; --j) {
+        int current_sum = previous_num;
+        for (int i = 0; i < 100; ++i) {
+            current_sum += nums[i][j] - '0';
+        }
+        sum += to_string(current_sum % 10);
+        previous_num = current_sum / 10;
     }
+
+    sum += previous_num > 0 ? to_string(previous_num) : "";
+
+    reverse(sum.begin(), sum.end());
+
+    cout << sum << '\n';
 }
