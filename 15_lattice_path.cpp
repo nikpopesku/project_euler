@@ -1,5 +1,6 @@
 #include <iostream>
 #include <set>
+#include <vector>
 
 #define ll long long
 
@@ -23,9 +24,12 @@ int main() {
         for (auto &denominator: st) {
             if (answer % denominator == 0) {
                 answer /= denominator;
-                st.erase(denominator);
                 erase.push_back(denominator);
             }
+        }
+
+        for (auto &e: erase) {
+            st.erase(e);
         }
     }
 
