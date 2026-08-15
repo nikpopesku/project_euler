@@ -12,22 +12,22 @@ string string_multiply(const string &a, const string &b) {
     string value = "0";
 
     for (ll i = static_cast<ll>(b.size()) - 1; i >= 0; --i) {
-        string current_value;
+        string cv;
         for (ll j = static_cast<ll>(a.size()) - 1; j >= 0; --j) {
             const int val = caret + (a[j] - '0') * (b[i] - '0');
-            current_value += to_string(val % 10);
+            cv += to_string(val % 10);
             caret = val / 10;
         }
-        if (caret > 0) current_value += '1';
-        reverse(current_value.begin(), current_value.end());
-        for (int j = 0; j < b.size() - 1 - i; ++j) current_value += '0';
+        if (caret > 0) cv += '1';
+        reverse(cv.begin(), cv.end());
+        for (int j = 0; j < b.size() - 1 - i; ++j) cv += '0';
 
         caret = 0;
         string new_value;
         int k = value.size() - 1;
-        int j = current_value.size() - 1;
+        int j = cv.size() - 1;
         for (; k >= 0 || j >= 0; --k, --j) {
-            int val = caret + (k >= 0 ? value[k] - '0' : 0) + (j >= 0 ? current_value[j] - '0' : 0);
+            int val = caret + (k >= 0 ? value[k] - '0' : 0) + (j >= 0 ? cv[j] - '0' : 0);
             new_value += to_string(val % 10);
             caret = val / 10;
         }
