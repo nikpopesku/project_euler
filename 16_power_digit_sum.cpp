@@ -25,7 +25,9 @@ string string_multiply(const string &a, const string &b) {
         caret = 0;
         string new_value;
         for (int i = max(value.size() - 1, current_value.size() - 1); i >= 0; --i) {
-            int val = caret + (i > value.size() - 1 ? 0 : value[i] - '0') + (i > current_value.size() - 1 ? 0 : current_value[i] - '0');
+            int val = caret + (i > value.size() - 1 ? 0 : value[i] - '0') + (i > current_value.size() - 1
+                                                                                 ? 0
+                                                                                 : current_value[i] - '0');
             current_value += to_string(val % 10);
             caret = val / 10;
             new_value += current_value;
