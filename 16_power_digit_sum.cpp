@@ -19,7 +19,7 @@ string string_multiply(const string &a, const string &b) {
             cv += to_string(val % 10);
             caret = val / 10;
         }
-        if (caret > 0) cv += '1';
+        if (caret > 0) cv += to_string(caret);
         reverse(cv.begin(), cv.end());
         for (int j = 0; j < b.size() - 1 - i; ++j) cv += '0';
 
@@ -57,7 +57,7 @@ string pow(string a, ll b) {
 }
 
 int main() {
-    const string s = pow("2", 5);
+    const string s = pow("2", 1000);
     ll response = 0;
 
     cout << s << '\n';
