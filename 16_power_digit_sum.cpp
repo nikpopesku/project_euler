@@ -24,18 +24,19 @@ string string_multiply(const string &a, const string &b) {
 
         caret = 0;
         string new_value;
-        for (int i = max(value.size() - 1, current_value.size() - 1); i >= 0; --i) {
-            int val = caret + (i > value.size() - 1 ? 0 : value[i] - '0') + (i > current_value.size() - 1
-                                                                                 ? 0
-                                                                                 : current_value[i] - '0');
-            current_value += to_string(val % 10);
+        int k = value.size() - 1;
+        int j = current_value.size() - 1;
+        for (; k >= 0 || j >= 0; --k, --j) {
+            int val = caret + (k >= 0 ? value[k] - '0' : 0) + (j >= 0 ? current_value[j] - '0' : 0);
+            new_value += to_string(val % 10);
             caret = val / 10;
-            new_value += current_value;
         }
         if (caret > 0) new_value += '1';
         reverse(new_value.begin(), new_value.end());
         value = new_value;
     }
+
+    return value;
 }
 
 string pow(string a, ll b) {
@@ -55,7 +56,7 @@ string pow(string a, ll b) {
 }
 
 int main() {
-    const string s = pow("2", 1000);
+    const string s = pow("2", 4);
     ll response = 0;
 
     for (const char x: s) {
