@@ -28,10 +28,11 @@ string pow(string a, ll b) {
 }
 
 int main() {
-    auto s = pow(2, 1000);
+    const string s = pow("2", 1000);
     ll response = 0;
-    for (char x: s) {
-        response += to_integer<ll>(x);
+
+    for (const char x: s) {
+        response += x - '0';
     }
 
     cout << response;
