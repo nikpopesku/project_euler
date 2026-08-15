@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-#define ll unsigned long long
+#define ll long long
 
 constexpr ll limit = 1'000;
 
