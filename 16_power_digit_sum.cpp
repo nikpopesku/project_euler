@@ -9,17 +9,30 @@ using namespace std;
 
 string string_multiply(const string &a, const string &b) {
     int caret = 0;
-    string value;
+    string value = "0";
 
-    for (ll i = b.size() - 1; i >= 0; --i) {
+    for (ll i = static_cast<ll>(b.size()) - 1; i >= 0; --i) {
         string current_value;
-        for (ll j = a.size() - 1; j >= 0; --j) {
+        for (ll j = static_cast<ll>(a.size()) - 1; j >= 0; --j) {
             const int val = caret + (a[j] - '0') * (b[i] - '0');
             current_value += to_string(val % 10);
             caret = val / 10;
         }
+        if (caret > 0) current_value += '1';
         reverse(current_value.begin(), current_value.end());
         for (int j = 0; j < b.size() - 1 - i; ++j) current_value += '0';
+
+        caret = 0;
+        string new_value;
+        for (int i = max(value.size() - 1, current_value.size() - 1); i >= 0; --i) {
+            int val = caret + (i > value.size() - 1 ? 0 : value[i] - '0') + (i > current_value.size() - 1 ? 0 : current_value[i] - '0');
+            current_value += to_string(val % 10);
+            caret = val / 10;
+            new_value += current_value;
+        }
+        if (caret > 0) new_value += '1';
+        reverse(new_value.begin(), new_value.end());
+        value = new_value;
     }
 }
 
