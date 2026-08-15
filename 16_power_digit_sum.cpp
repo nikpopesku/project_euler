@@ -1,14 +1,26 @@
 #include <cmath>
 #include <iostream>
 
-#define ll long long
+#define ll unsigned long long
 
 constexpr ll limit = 1'000;
 
 using namespace std;
 
-string string_multiply(string a, string b) {
-    return a;
+string string_multiply(const string &a, const string &b) {
+    int caret = 0;
+    string value;
+
+    for (ll i = b.size() - 1; i >= 0; --i) {
+        string current_value;
+        for (ll j = a.size() - 1; j >= 0; --j) {
+            const int val = caret + (a[j] - '0') * (b[i] - '0');
+            current_value += to_string(val % 10);
+            caret = val / 10;
+        }
+        reverse(current_value.begin(), current_value.end());
+        for (int j = 0; j < b.size() - 1 - i; ++j) current_value += '0';
+    }
 }
 
 string pow(string a, ll b) {
