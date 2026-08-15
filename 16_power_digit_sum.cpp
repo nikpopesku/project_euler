@@ -13,6 +13,7 @@ string string_multiply(const string &a, const string &b) {
 
     for (ll i = static_cast<ll>(b.size()) - 1; i >= 0; --i) {
         string cv;
+        caret = 0;
         for (ll j = static_cast<ll>(a.size()) - 1; j >= 0; --j) {
             const int val = caret + (a[j] - '0') * (b[i] - '0');
             cv += to_string(val % 10);
@@ -56,8 +57,10 @@ string pow(string a, ll b) {
 }
 
 int main() {
-    const string s = pow("2", 4);
+    const string s = pow("2", 5);
     ll response = 0;
+
+    cout << s << '\n';
 
     for (const char x: s) {
         response += x - '0';
