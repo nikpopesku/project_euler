@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-constexpr ll limit = 1'000;
+constexpr int limit = 1'000;
 
 using namespace std;
 
@@ -26,11 +26,15 @@ int main() {
     for (int i = 1; i <= limit; ++i) {
         if (i >= 100) {
             cnt += ones[i / 100].size();
-            cnt += 10; //hundred and
+            cnt += 7; // hundred
         }
 
-        cnt += tens[(i % 100) / 10].size();
-        cnt += ones[i % 10].size();
+        if (i % 10 != 0 || (i % 100) / 10 != 0) {
+            cnt += 3; // and
+            cnt += tens[(i % 100) / 10].size();
+            cnt += ones[i % 10].size();
+
+        }
     }
 
     cout << cnt << '\n';
