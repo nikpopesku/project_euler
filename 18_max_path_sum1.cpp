@@ -25,7 +25,11 @@ int main() {
     vector<vector<int> > dp(15);
     dp[14] = vector{4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23};
 
-    // for (int i = 14; i>= 0; --i) {
-    //
-    // }
+    for (int i = 13; i >= 0; --i) {
+        for (int j = 0; j < i + 1; ++j) {
+            dp[i][j] = triangle[i][j] + max(dp[i + 1][j], dp[i + 1][j + 1]);
+        }
+    }
+
+    cout << dp[0][0];
 }
