@@ -23,7 +23,13 @@ int main() {
     int cnt = 0;
 
     for (int i = 1; i <= limit; ++i) {
+        if (i >= 100) {
+            cnt += ONES[i / 100].size();
+            cnt += 10; //hundred and
+        }
 
+        cnt += TENS[(i % 100) / 10].size();
+        cnt += ONES[i % 10].size();
     }
 
     cout << cnt << '\n';
