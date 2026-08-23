@@ -31,9 +31,12 @@ int main() {
 
         if (i % 10 != 0 || (i % 100) / 10 != 0) {
             cnt += 3; // and
-            cnt += tens[(i % 100) / 10].size();
-            cnt += ones[i % 10].size();
-
+            if (i % 100 >= 10 && i % 100 <= 19) {
+                cnt += ones[i % 100].size();
+            } else {
+                cnt += tens[(i % 100) / 10].size();
+                cnt += ones[i % 10].size();
+            }
         }
     }
 
