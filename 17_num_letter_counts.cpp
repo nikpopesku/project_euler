@@ -23,14 +23,16 @@ int main() {
     };
 
 
-    for (int i = 1; i <= limit; ++i) {
+    for (int i = 1; i < limit; ++i) {
         if (i >= 100) {
             cnt += ones[i / 100].size();
             cnt += 7; // hundred
         }
 
         if (i % 10 != 0 || (i % 100) / 10 != 0) {
-            cnt += 3; // and
+            if (i >= 100) {
+                cnt += 3; // and
+            }
             if (i % 100 >= 10 && i % 100 <= 19) {
                 cnt += ones[i % 100].size();
             } else {
@@ -39,6 +41,8 @@ int main() {
             }
         }
     }
+
+    cnt += 11; //one thousand
 
     cout << cnt << '\n';
 }
