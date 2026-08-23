@@ -23,6 +23,11 @@ vector<vector<int> > triangle = {
 
 int main() {
     vector<vector<int> > dp(15);
+    for (int i = 0; i < 14; ++i) {
+        vector<int> v;
+        v.resize(i + 1);
+        dp[i] = v;
+    }
     dp[14] = vector{4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23};
 
     for (int i = 13; i >= 0; --i) {
