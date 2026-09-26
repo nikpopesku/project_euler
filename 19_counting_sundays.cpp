@@ -12,17 +12,33 @@ bool is_leap(const int year) {
 }
 
 
-
 int main() {
-    vector<int> days_by_month = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int day_of_week = 0;
+    vector<int> first_month_day_normal = {1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335};
+    vector<int> first_month_day_leap = {1, 32, 61, 92, 122, 153, 183, 214, 245, 275, 306, 336};
     int count_sundays = 0;
+    int day_of_week = 7;
 
     for (int year = 1901; year <= 2000; ++year) {
-        int day_limit = is_leap(year) ? 366 : 365;
+        bool leap = is_leap(year);
+        int day_limit = leap ? 366 : 365;
+        int month_counter = 0;
+
 
         for (int day = 1; day <= day_limit; ++day) {
-            if (day == 1 && day_of_week == 7) ++count_sundays;
+            day_of_week = (day_of_week + 1) % 7;
+            if (month_counter < 12) {
+                if (day == first_month_day_normal[month_counter + 1] - 1) {
+                    ++month_counter;
+                } else if (leap && day >= first_month_day_leap[month_counter + 1] - 1) {
+                    ++month_counter;
+                }
+            }
+
+            if (day == first_month_day_normal[month_counter] && day_of_week == 7) {
+                ++count_sundays;
+            } else if (leap && day == first_month_day_leap[month_counter] && day_of_week == 7) {
+                ++count_sundays;
+            }
         }
     }
 
