@@ -27,16 +27,16 @@ int main() {
         for (int day = 1; day <= day_limit; ++day) {
             day_of_week = (day_of_week + 1) % 7;
             if (month_counter < 11) {
-                if (day == first_month_day_normal[month_counter + 1] - 1) {
+                if (!leap && day == first_month_day_normal[month_counter + 1] - 1) {
                     ++month_counter;
                 } else if (leap && day >= first_month_day_leap[month_counter + 1] - 1) {
                     ++month_counter;
                 }
             }
 
-            if (day == first_month_day_normal[month_counter] && day_of_week == 6) {
+            if (!leap && day == first_month_day_normal[month_counter] && day_of_week == 6) {
                 ++count_sundays;
-            } else if (leap && day == first_month_day_leap[month_counter] && day_of_week == 7) {
+            } else if (leap && day == first_month_day_leap[month_counter] && day_of_week == 6) {
                 ++count_sundays;
             }
         }
