@@ -16,7 +16,7 @@ int main() {
     vector<int> first_month_day_normal = {1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335};
     vector<int> first_month_day_leap = {1, 32, 61, 92, 122, 153, 183, 214, 245, 275, 306, 336};
     int count_sundays = 0;
-    int day_of_week = 7;
+    int day_of_week = 6;
 
     for (int year = 1901; year <= 2000; ++year) {
         const bool leap = is_leap(year);
@@ -34,7 +34,7 @@ int main() {
                 }
             }
 
-            if (day == first_month_day_normal[month_counter] && day_of_week == 7) {
+            if (day == first_month_day_normal[month_counter] && day_of_week == 6) {
                 ++count_sundays;
             } else if (leap && day == first_month_day_leap[month_counter] && day_of_week == 7) {
                 ++count_sundays;
