@@ -19,14 +19,14 @@ int main() {
     int day_of_week = 7;
 
     for (int year = 1901; year <= 2000; ++year) {
-        bool leap = is_leap(year);
-        int day_limit = leap ? 366 : 365;
+        const bool leap = is_leap(year);
+        const int day_limit = leap ? 366 : 365;
         int month_counter = 0;
 
 
         for (int day = 1; day <= day_limit; ++day) {
             day_of_week = (day_of_week + 1) % 7;
-            if (month_counter < 12) {
+            if (month_counter < 11) {
                 if (day == first_month_day_normal[month_counter + 1] - 1) {
                     ++month_counter;
                 } else if (leap && day >= first_month_day_leap[month_counter + 1] - 1) {
